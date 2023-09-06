@@ -12,4 +12,5 @@ DEFMT_LOG = "trace"
 debug = true
 
 [alias]
-fl = "flash --bin can --release --chip STM32f413RHTx"
+fl_can = "flash --bin can --release --chip STM32f413RHTx"
+fl_accel = "flash --bin accel --release --chip STM32f413RHTx"

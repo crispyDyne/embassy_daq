@@ -36,7 +36,7 @@ async fn main(_spawner: Spawner) {
 
     can.as_mut().modify_config().leave_disabled();
 
-    can.set_bitrate(125_000);
+    can.set_bitrate(100_000);
 
     can.enable().await;
 
