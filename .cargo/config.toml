@@ -14,3 +14,4 @@ debug = true
 [alias]
 fl_can = "flash --bin can --release --chip STM32f413RHTx"
 fl_accel = "flash --bin accel --release --chip STM32f413RHTx"
+fl_load = "flash --bin load --release --chip STM32f413RHTx"
