@@ -43,10 +43,18 @@ def unpack_bridge_config(bridge_config):
     )
 
 
+full_scale_load = 50  # kg
+preamp_gain = 192  # amplifier gain
+adc_bits = 14
+load_cell_sensitivity = 1.3e-3  # 1.3 mV/V
+
+load_per_bit = full_scale_load / (2**adc_bits * preamp_gain * load_cell_sensitivity)
+zero_offset_bits = -(2 ** (adc_bits - 1)) + 82
+
+# filter
 load = 0
 update = 0.2
-offset = -(2**13) + 77
-gain = 1 / 80
+
 while True:
     # receive message
     msg = can0.recv(10.0)
@@ -67,7 +75,8 @@ while True:
             print(u8_array_to_u16(msg.data))
         elif len(msg.data) == 5:
             # load cell data with status (normal 0, command 1)
-            new_load = (u8_array_to_u16(msg.data[1:3]) + offset) * gain
+            raw_load_bits = u8_array_to_u16(msg.data[1:3])
+            new_load = (raw_load_bits + zero_offset_bits) * load_per_bit
             load = load * (1 - update) + new_load * update
             print(f"status: {msg.data[0]}, data: {load:+.3f}")
         else:
