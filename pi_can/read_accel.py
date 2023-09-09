@@ -34,7 +34,7 @@ while True:
         print("Timeout occurred, no message.")
     else:
         (x, y, z) = translate_u8_to_xyz(msg.data)
-        print(f"x: {x}, y: {y}, z: {z}")
+        print(f"x:{x:>5}, y:{y:>5}, z:{z:>5}")
 
 
 # os.system("sudo ifconfig can0 down")
