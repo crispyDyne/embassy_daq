@@ -49,12 +49,13 @@ async fn main(_spawner: Spawner) {
 
     can.enable().await;
 
+    // configure spi
     let mut spi_config = Config::default();
     spi_config.frequency = Hertz(100_000);
     spi_config.mode = spi::MODE_0;
-
     let mut spi = Spi::new(p.SPI1, p.PA5, p.PA7, p.PA6, NoDma, NoDma, spi_config);
-    // set digital out pins
+
+    // set digital out pins for mikroBus 1
     let mut accel_active = Output::new(p.PA4, Level::High, Speed::Low);
     // let mut gyro_active = Output::new(p.PC13, Level::High, Speed::Low);
     // let mut mag_active = Output::new(p.PA1, Level::High, Speed::Low);

@@ -69,6 +69,7 @@ async fn main(_spawner: Spawner) {
         Default::default(),
     );
 
+    // set digital out pins for mikroBus 2
     let loadcell_data_ready = Input::new(p.PB14, Pull::Down);
     let _loadcell_enable = Output::new(p.PB12, Level::High, Speed::Low); // must be high to enable load cell
     Timer::after(Duration::from_millis(3)).await;
