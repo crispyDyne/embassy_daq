@@ -20,11 +20,20 @@
 ## Raspbery Pi Setup
 See the [raspberry-pi.md](./raspberry-pi.md) file for instructions on setting up the raspberry pi.
 
+## Run blink demo
+``` console
+cargo run --release --bin blink
+```
+
+Note that using `cargo run` maintains a connection to the board, so debugging messages can be printed to the console.
+
 ## Run can demo
 The reset button on the board must be pressed before flashing.
 ``` console
 cargo flash --bin can --release --chip STM32f413RHTx
 ```
+
+When using `cargo flash`, the connection to the board is closed, so debugging messages cannot be printed to the console.
 
 Which has been aliased to:
 ``` console
