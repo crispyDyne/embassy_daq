@@ -1,8 +1,7 @@
 #![no_std]
 #![no_main]
-#![feature(type_alias_impl_trait)]
 
-use defmt::info;
+use defmt::*;
 use embassy_executor::Spawner;
 use embassy_stm32::gpio::{Level, Output, Speed};
 use embassy_time::{Duration, Timer};

@@ -1,7 +1,6 @@
 // this started as a copy of the example from embassy-stm32/examples/can.rs see acknowledgements file for more info
 #![no_std]
 #![no_main]
-#![feature(type_alias_impl_trait)]
 
 use defmt::*;
 use embassy_executor::Spawner;

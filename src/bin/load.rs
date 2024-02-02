@@ -3,7 +3,6 @@
 
 #![no_std]
 #![no_main]
-#![feature(type_alias_impl_trait)]
 
 use defmt::*;
 use embassy_executor::Spawner;
@@ -28,7 +27,8 @@ bind_interrupts!(struct Irqs {
     CAN1_RX1 => Rx1InterruptHandler<CAN1>;
     CAN1_SCE => SceInterruptHandler<CAN1>;
     CAN1_TX => TxInterruptHandler<CAN1>;
-    I2C1_EV => i2c::InterruptHandler<peripherals::I2C1>;
+    I2C1_EV => i2c::EventInterruptHandler<peripherals::I2C1>;
+    I2C1_ER => i2c::ErrorInterruptHandler<peripherals::I2C1>;
 });
 
 // i2c words
